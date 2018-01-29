@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
+
 	"github.com/zirra-com/trumail/api"
 	"github.com/zirra-com/trumail/config"
 )
