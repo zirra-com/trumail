@@ -6,8 +6,8 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/sdwolfe32/trumail/api"
-	"github.com/sdwolfe32/trumail/config"
+	"github.com/zirra-com/trumail/api"
+	"github.com/zirra-com/trumail/config"
 )
 
 func main() {

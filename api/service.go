@@ -2,10 +2,11 @@ package api
 
 import (
 	"net/http"
+	"strings"
 
 	"github.com/Sirupsen/logrus"
 	"github.com/gorilla/mux"
-	"github.com/sdwolfe32/trumail/verifier"
+	"github.com/zirra-com/trumail/verifier"
 )
 
 const maxWorkerCount = 20
@@ -51,15 +52,14 @@ func (s *lookuper) Lookup(r *http.Request) (interface{}, error) {
 
 	// Performs the full email validation
 	l.Info("Performing new validation lookup")
-	lookups := s.ever.Verify(email)
+	lookups := s.ever.Verify(strings.Split(email, ",")...)
 	if len(lookups) == 0 {
 		return nil, NewError("Error validating email", http.StatusInternalServerError, nil).Log(l)
 	}
-	lookup := lookups[0]
 
 	// Returns the email validation lookup to the requestor
-	l.WithField("lookup", lookup).Info("Returning Email Lookup")
-	return lookup, nil
+	l.WithField("lookup", lookups).Info("Returning Email Lookup")
+	return lookups, nil
 }
 
 // healthcheck represents the response to a healthcheck request

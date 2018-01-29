@@ -14,7 +14,7 @@ type Address struct{ Username, Domain, Address string }
 // of an Address struct pointer
 func ParseAddress(email string) (*Address, error) {
 	// Parses the address with the internal go mail address parser
-	a, err := mail.ParseAddress(strings.ToLower(email))
+	a, err := mail.ParseAddress(strings.ToLower(strings.TrimSpace(email)))
 	if err != nil {
 		return nil, err
 	}

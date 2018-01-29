@@ -1,9 +1,9 @@
 version: 2
 jobs:
   build:
-    working_directory: /go/src/github.com/sdwolfe32/trumail
+    working_directory: /go/src/github.com/zirra-com/trumail
     environment:
-      - DOCKER_TAG: sdwolfe32/trumail
+      - DOCKER_TAG: zirra/trumail
     docker:
       - image: circleci/golang:1.9.1
     steps:
